@@ -1,0 +1,15 @@
+version: "3"
+
+services: 
+    app:
+        user: $UID:$GID
+        build:
+            context: .
+        ports: 
+            - "5000:5000"
+        volumes: 
+            - ./app:/app
+        environment: 
+            - FLASK_APP=app
+        command: > 
+            sh -c "flask run --host=0.0.0.0:5000"
